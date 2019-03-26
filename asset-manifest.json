@@ -1,14 +1,14 @@
 {
   "main.css": "/cox-app/static/css/main.002ffd43.chunk.css",
-  "main.js": "/cox-app/static/js/main.d136ddae.chunk.js",
-  "main.js.map": "/cox-app/static/js/main.d136ddae.chunk.js.map",
+  "main.js": "/cox-app/static/js/main.2c2ee8a8.chunk.js",
+  "main.js.map": "/cox-app/static/js/main.2c2ee8a8.chunk.js.map",
   "runtime~main.js": "/cox-app/static/js/runtime~main.dbad7e00.js",
   "runtime~main.js.map": "/cox-app/static/js/runtime~main.dbad7e00.js.map",
   "static/css/2.9900ef0d.chunk.css": "/cox-app/static/css/2.9900ef0d.chunk.css",
   "static/js/2.e42eadff.chunk.js": "/cox-app/static/js/2.e42eadff.chunk.js",
   "static/js/2.e42eadff.chunk.js.map": "/cox-app/static/js/2.e42eadff.chunk.js.map",
   "index.html": "/cox-app/index.html",
-  "precache-manifest.975530cdcf52a55c2d0f27085a8e917c.js": "/cox-app/precache-manifest.975530cdcf52a55c2d0f27085a8e917c.js",
+  "precache-manifest.8eeedce86dc3185a1fadd3ef50ebd3f0.js": "/cox-app/precache-manifest.8eeedce86dc3185a1fadd3ef50ebd3f0.js",
   "service-worker.js": "/cox-app/service-worker.js",
   "static/css/2.9900ef0d.chunk.css.map": "/cox-app/static/css/2.9900ef0d.chunk.css.map",
   "static/css/main.002ffd43.chunk.css.map": "/cox-app/static/css/main.002ffd43.chunk.css.map"
