@@ -186,31 +186,31 @@ class App extends Component {
               All elements removed !!{" "}
             </Alert>
           ) : null}
-
-          <Table borderless className="container">
+          <Table bordered style={{width:"70%"}} className="container">
             <tbody>
               {this.state.show
                 ? this.state.result.map((e, idx) => (
                     <tr>
-                      <td>
+                      <td className="td">
+                        {e.c1?
                         <Button onClick={x => this.removeElement(e.c1)}>
                           {e.c1}
-                        </Button>
+                        </Button>:null}
                       </td>
-                      <td>
-                        <Button onClick={x => this.removeElement(e.c2)}>
+                      <td className="td">  
+                      {e.c2? <Button onClick={x => this.removeElement(e.c2)}>
                           {e.c2}
-                        </Button>
+                        </Button>:null}
                       </td>
-                      <td>
-                        <Button onClick={x => this.removeElement(e.c3)}>
+                      <td className="td">
+                       {e.c3? <Button onClick={x => this.removeElement(e.c3)}>
                           {e.c3}
-                        </Button>
+                        </Button>:null}
                       </td>
-                      <td>
-                        <Button onClick={x => this.removeElement(e.c4)}>
+                      <td className="td">
+                        {e.c4?<Button onClick={x => this.removeElement(e.c4)}>
                           {e.c4}
-                        </Button>
+                        </Button>:null}
                       </td>
                     </tr>
                   ))

@@ -36,3 +36,14 @@ ul {
   text-align: left;
   font-size: small
 }
+
+
+Button{
+  height:50px;
+
+}
+.td{
+  min-width:100px;
+  min-height:50px;
+  border: 2px solid #888888
+}
