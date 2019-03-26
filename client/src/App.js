@@ -139,7 +139,7 @@ class App extends Component {
                   //validate for text
                   var { value } = e.target;
                   //split only when we have valid text
-                  if (value) {
+                  // if (value) {
                     this.setState({
                       data: value.split(" "),
                       master: value.split(" "),
@@ -147,7 +147,7 @@ class App extends Component {
                       done: 0,
                       txt: value
                     });
-                  }
+                  // }
                 }}
               />
 
