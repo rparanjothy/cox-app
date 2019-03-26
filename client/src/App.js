@@ -150,8 +150,8 @@ class App extends Component {
                   //split only when we have valid text
                   // if (value) {
                   this.setState({
-                    data: value.split(" "),
-                    master: value.split(" "),
+                    data: value.trim().split(" "),
+                    master: value.trim().split(" "),
                     hasData: 1,
                     done: 0,
                     txt: value
