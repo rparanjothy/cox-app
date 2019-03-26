@@ -7,19 +7,19 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.arrange = this.arrange.bind(this);
-    this.state = { show: 0, hasData: 0 };
+    this.removeElement = this.removeElement.bind(this);
+    this.state = { show: 0, hasData: 0, done: 0 };
   }
 
-  componentDidMount() {
-    console.log("hhh");
-  }
-
-  arrange(data) {
+  arrange(x) {
+    var data = [...x];
     var words = [];
     var d = [];
+    console.log("Inside Arrange");
+    console.log(`master - ${this.state.master}`);
+
     console.log("Sorting");
     if (data.length > 0) {
-      // words = data.split(",");
       var words = data;
       words = words.sort();
       this.setState({ words }, () => {
@@ -56,14 +56,27 @@ class App extends Component {
       var out = [];
       for (var i = 0; i < row; i++) {
         out.push({ c1: d[0][i], c2: d[1][i], c3: d[2][i], c4: d[3][i] });
-        this.setState({ result: out, show: 1 }, () => {
-          console.log("JSON Ready");
-        });
       }
+      //moved outside the loop
+      this.setState({ result: out, show: 1 }, () => {
+        console.log("JSON Ready");
+        console.log(this.state.result);
+      });
+    } else {
+      // when empty set done to on
+      this.setState({ show: 0, done: 1 });
     }
-    // this.setState({ grid: d, show: 1 }, () => {
-    //   console.log("grid set");
-    // });
+  }
+
+  removeElement(e) {
+    console.log(`Remove Element ${e}`);
+    var master = this.state.master;
+    master = master.filter(x => x !== e);
+    console.log(master);
+    this.setState({ master: master, data: master }, () => {
+      console.log(`master is now ${this.state.master}`);
+      this.arrange(this.state.master);
+    });
   }
 
   render() {
@@ -77,15 +90,20 @@ class App extends Component {
             }}
           >
             <FormGroup>
-              <Label for="elements">Enter your words</Label>
+              <Label for="elements">
+                Enter your words to be sorted and arranged in a nX4 matrix
+              </Label>
+              <br />
+              <Label for="elements">Click a word to remove </Label>
+
               <Input
                 type="text"
                 name="elements"
-                placeholder="apple,orange,grapes"
+                placeholder="apple orange grapes"
                 onChange={e =>
                   this.setState({
-                    data: e.target.value.split(","),
-                    master: e.target.value.split(","),
+                    data: e.target.value.split(" "),
+                    master: e.target.value.split(" "),
                     hasData: 1
                   })
                 }
@@ -105,46 +123,31 @@ class App extends Component {
             </FormGroup>
           </Form>
 
+          {this.state.done ? "All elements removed !!" : null}
+
           <Table>
             <tbody>
               {this.state.show
                 ? this.state.result.map((e, idx) => (
                     <tr>
                       <td>
-                        <Button
-                          onClick={e => {
-                            const filtered=this.state.master.splice(
-                              this.state.master.indexOf(e.c1),
-                              1
-                            );
-                            console.log(filtered)
-                            this.setState(
-                              {
-                                master:filtered
-                              },
-                              () => {
-                                console.log(this.state.master);
-                                this.arrange(this.state.master);
-                              }
-                            );
-                          }}
-                        >
-                          {e.c1} {idx}
+                        <Button onClick={x => this.removeElement(e.c1)}>
+                          {e.c1}
                         </Button>
                       </td>
                       <td>
-                        <Button>
-                          {e.c2} {idx}
+                        <Button onClick={x => this.removeElement(e.c2)}>
+                          {e.c2}
                         </Button>
                       </td>
                       <td>
-                        <Button>
-                          {e.c3} {idx}
+                        <Button onClick={x => this.removeElement(e.c3)}>
+                          {e.c3}
                         </Button>
                       </td>
                       <td>
-                        <Button>
-                          {e.c4} {idx}
+                        <Button onClick={x => this.removeElement(e.c4)}>
+                          {e.c4}
                         </Button>
                       </td>
                     </tr>
