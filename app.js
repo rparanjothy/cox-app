@@ -4,35 +4,37 @@ const log = m => {
 
 log("hi");
 
-// data=['alpha','beta','charlie','def','eight','india']
+ data=['alpha','beta','charlie','def','apple','eight','india']
 // data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
-data = [
-  1,
-  2,
-  3,
-  4,
-  5,
-  // 6,
-  // 7,
-  // 8,
-  // 9,
-  // 11,
-  11,
-  12,
-  13,
-  14,
-  15,
-  16,
-  17,
-  18,
-  19,
-  20,
-  21,
-  22
-];
+// data = [
+//   1,
+//   2,
+//   3,
+//   4,
+//   5,
+//   // 6,
+//   // 7,
+//   // 8,
+//   // 9,
+//   // 11,
+//   11,
+//   12,
+//   13,
+//   14,
+//   15,
+//   16,
+//   17,
+//   18,
+//   19,
+//   20,
+//   21,
+//   22
+// ];
 d = [];
 const a = data => {
-  data = data.sort((a, b) => a - b);
+  // data = data.sort((a, b) => a - b);
+  data = data.sort();
+
   log(data.length);
   // see if it is a multiple of 4
   // get the rows count
