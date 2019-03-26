@@ -19,7 +19,8 @@ class App extends Component {
     var d = [];
     console.log("Sorting");
     if (data.length > 0) {
-      words = data.split(",");
+      // words = data.split(",");
+      var words = data;
       words = words.sort();
       this.setState({ words }, () => {
         console.log("words set");
@@ -82,7 +83,11 @@ class App extends Component {
                 name="elements"
                 placeholder="apple,orange,grapes"
                 onChange={e =>
-                  this.setState({ data: e.target.value, hasData: 1 })
+                  this.setState({
+                    data: e.target.value.split(","),
+                    master: e.target.value.split(","),
+                    hasData: 1
+                  })
                 }
               />
 
@@ -107,14 +112,22 @@ class App extends Component {
                     <tr>
                       <td>
                         <Button
-                          onClick={e =>
-                            this.setState({
-                              words: this.state.words.splice(
-                                this.state.words.indexOf(e.c1),
-                                1
-                              )
-                            })
-                          }
+                          onClick={e => {
+                            const filtered=this.state.master.splice(
+                              this.state.master.indexOf(e.c1),
+                              1
+                            );
+                            console.log(filtered)
+                            this.setState(
+                              {
+                                master:filtered
+                              },
+                              () => {
+                                console.log(this.state.master);
+                                this.arrange(this.state.master);
+                              }
+                            );
+                          }}
                         >
                           {e.c1} {idx}
                         </Button>
