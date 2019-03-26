@@ -64,9 +64,13 @@ const a = data => {
   // log(d);
 
   //Transpose
+  out=[]
   for (i = 0; i < row; i++) {
     log([d[0][i], d[1][i], d[2][i], d[3][i]].join(" | "));
+    out.push({c1:d[0][i], c2:d[1][i], c3:d[2][i], c4:d[3][i]})
   }
+
+  log(out)
 
   // for (i = 0; i < 4; i++) {
   //    for (j = 0; j < d[i].length; j++) {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-import { TransitionTimeouts } from "reactstrap/lib/utils";
+import { Table } from "reactstrap";
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +21,9 @@ class App extends Component {
     if (data.length > 0) {
       words = data.split(",");
       words = words.sort();
+      this.setState({ words }, () => {
+        console.log("words set");
+      });
       console.log(words);
 
       console.log(words.length);
@@ -49,10 +52,17 @@ class App extends Component {
         d.push(words.splice(0, row - 1));
         // log(d)
       }
+      var out = [];
+      for (var i = 0; i < row; i++) {
+        out.push({ c1: d[0][i], c2: d[1][i], c3: d[2][i], c4: d[3][i] });
+        this.setState({ result: out, show: 1 }, () => {
+          console.log("JSON Ready");
+        });
+      }
     }
-    this.setState({ grid: d, show: 1 }, () => {
-      console.log("grid set");
-    });
+    // this.setState({ grid: d, show: 1 }, () => {
+    //   console.log("grid set");
+    // });
   }
 
   render() {
@@ -89,17 +99,46 @@ class App extends Component {
               ) : null}
             </FormGroup>
           </Form>
-          {this.state.show ? (
-            <div>
-              
-              {this.state.grid[0].map(e=><div>{e}</div>)} 
-              {this.state.grid[1]}
-              {this.state.grid[2]}
-              {this.state.grid[3]}
 
-              
-            </div>
-          ) : null}
+          <Table>
+            <tbody>
+              {this.state.show
+                ? this.state.result.map((e, idx) => (
+                    <tr>
+                      <td>
+                        <Button
+                          onClick={e =>
+                            this.setState({
+                              words: this.state.words.splice(
+                                this.state.words.indexOf(e.c1),
+                                1
+                              )
+                            })
+                          }
+                        >
+                          {e.c1} {idx}
+                        </Button>
+                      </td>
+                      <td>
+                        <Button>
+                          {e.c2} {idx}
+                        </Button>
+                      </td>
+                      <td>
+                        <Button>
+                          {e.c3} {idx}
+                        </Button>
+                      </td>
+                      <td>
+                        <Button>
+                          {e.c4} {idx}
+                        </Button>
+                      </td>
+                    </tr>
+                  ))
+                : null}
+            </tbody>
+          </Table>
         </div>
       </div>
     );
