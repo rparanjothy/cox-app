@@ -119,11 +119,20 @@ class App extends Component {
             }}
           >
             <FormGroup>
+              <div className="problem" style={{textAlign:"left", paddingTop:"10px",fontSize:'15px'}}>
+                <b>Problem:</b> Create an application that accepts words from a
+                user and sorts the words alphabetically into four columns,
+                vertically, then horizontally. The last row should be the only
+                row that contains any empty cells if the number of words are not
+                evenly divisible by 4.
+              </div>
+
               <Label className="info">
-                <b>Instructions:</b>
+                <b>Instructions</b>
                 <ul>
                   <li>
-                    Enter your words below to be sorted and arranged in a nX4 matrix
+                    Enter your words below to be sorted and arranged in a nX4
+                    matrix
                   </li>
                   <li> Click "Arrange" / Enter to arrange </li>
                   <li>Click a word to remove it</li>
@@ -140,13 +149,13 @@ class App extends Component {
                   var { value } = e.target;
                   //split only when we have valid text
                   // if (value) {
-                    this.setState({
-                      data: value.split(" "),
-                      master: value.split(" "),
-                      hasData: 1,
-                      done: 0,
-                      txt: value
-                    });
+                  this.setState({
+                    data: value.split(" "),
+                    master: value.split(" "),
+                    hasData: 1,
+                    done: 0,
+                    txt: value
+                  });
                   // }
                 }}
               />
@@ -186,31 +195,38 @@ class App extends Component {
               All elements removed !!{" "}
             </Alert>
           ) : null}
-          <Table bordered style={{width:"70%"}} className="container">
+          <Table bordered style={{ width: "70%" }} className="container">
             <tbody>
               {this.state.show
                 ? this.state.result.map((e, idx) => (
                     <tr>
                       <td className="td">
-                        {e.c1?
-                        <Button onClick={x => this.removeElement(e.c1)}>
-                          {e.c1}
-                        </Button>:null}
-                      </td>
-                      <td className="td">  
-                      {e.c2? <Button onClick={x => this.removeElement(e.c2)}>
-                          {e.c2}
-                        </Button>:null}
+                        {e.c1 ? (
+                          <Button onClick={x => this.removeElement(e.c1)}>
+                            {e.c1}
+                          </Button>
+                        ) : null}
                       </td>
                       <td className="td">
-                       {e.c3? <Button onClick={x => this.removeElement(e.c3)}>
-                          {e.c3}
-                        </Button>:null}
+                        {e.c2 ? (
+                          <Button onClick={x => this.removeElement(e.c2)}>
+                            {e.c2}
+                          </Button>
+                        ) : null}
                       </td>
                       <td className="td">
-                        {e.c4?<Button onClick={x => this.removeElement(e.c4)}>
-                          {e.c4}
-                        </Button>:null}
+                        {e.c3 ? (
+                          <Button onClick={x => this.removeElement(e.c3)}>
+                            {e.c3}
+                          </Button>
+                        ) : null}
+                      </td>
+                      <td className="td">
+                        {e.c4 ? (
+                          <Button onClick={x => this.removeElement(e.c4)}>
+                            {e.c4}
+                          </Button>
+                        ) : null}
                       </td>
                     </tr>
                   ))
