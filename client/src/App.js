@@ -88,7 +88,7 @@ class App extends Component {
       });
     } else {
       // when empty set done to on
-      this.setState({ show: 0, done: 1, hasData: 0, txt: "", visible: true });
+      this.setState({ show: 0, done: 1, hasData: 0, txt: "", visible: true,result:{} });
 
       //reset the text
     }
