@@ -119,7 +119,14 @@ class App extends Component {
             }}
           >
             <FormGroup>
-              <div className="problem" style={{textAlign:"left", paddingTop:"10px",fontSize:'15px'}}>
+              <div
+                className="problem"
+                style={{
+                  textAlign: "left",
+                  paddingTop: "10px",
+                  fontSize: "15px"
+                }}
+              >
                 <b>Problem:</b> Create an application that accepts words from a
                 user and sorts the words alphabetically into four columns,
                 vertically, then horizontally. The last row should be the only
@@ -148,15 +155,25 @@ class App extends Component {
                   //validate for text
                   var { value } = e.target;
                   //split only when we have valid text
-                  // if (value) {
-                  this.setState({
-                    data: value.trim().split(" "),
-                    master: value.trim().split(" "),
-                    hasData: 1,
-                    done: 0,
-                    txt: value
-                  });
-                  // }
+                  if (value) {
+                    this.setState({
+                      data: value.trim().split(" "),
+                      master: value.trim().split(" "),
+                      hasData: 1,
+                      done: 0,
+                      txt: value
+                    });
+                  } else {
+                    // txtbox is empty hide all buttons, reset everything, wipe off master
+                    this.setState({
+                      hasData: 0,
+                      done: 0,
+                      txt: null,
+                      show:0,
+                      master:[],
+                      result:{}
+                    });
+                  }
                 }}
               />
 
@@ -195,44 +212,48 @@ class App extends Component {
               All elements removed !!{" "}
             </Alert>
           ) : null}
-          <Table bordered style={{ width: "70%" }} className="container">
-            <tbody>
-              {this.state.show
-                ? this.state.result.map((e, idx) => (
-                    <tr>
-                      <td className="td">
-                        {e.c1 ? (
-                          <Button onClick={x => this.removeElement(e.c1)}>
-                            {e.c1}
-                          </Button>
-                        ) : null}
-                      </td>
-                      <td className="td">
-                        {e.c2 ? (
-                          <Button onClick={x => this.removeElement(e.c2)}>
-                            {e.c2}
-                          </Button>
-                        ) : null}
-                      </td>
-                      <td className="td">
-                        {e.c3 ? (
-                          <Button onClick={x => this.removeElement(e.c3)}>
-                            {e.c3}
-                          </Button>
-                        ) : null}
-                      </td>
-                      <td className="td">
-                        {e.c4 ? (
-                          <Button onClick={x => this.removeElement(e.c4)}>
-                            {e.c4}
-                          </Button>
-                        ) : null}
-                      </td>
-                    </tr>
-                  ))
-                : null}
-            </tbody>
-          </Table>
+
+          {/* Table render */}
+          {this.state.hasData ? (
+            <Table bordered style={{ width: "70%" }} className="container">
+              <tbody>
+                {this.state.show
+                  ? this.state.result.map((e, idx) => (
+                      <tr>
+                        <td className="td">
+                          {e.c1 ? (
+                            <Button onClick={x => this.removeElement(e.c1)}>
+                              {e.c1}
+                            </Button>
+                          ) : null}
+                        </td>
+                        <td className="td">
+                          {e.c2 ? (
+                            <Button onClick={x => this.removeElement(e.c2)}>
+                              {e.c2}
+                            </Button>
+                          ) : null}
+                        </td>
+                        <td className="td">
+                          {e.c3 ? (
+                            <Button onClick={x => this.removeElement(e.c3)}>
+                              {e.c3}
+                            </Button>
+                          ) : null}
+                        </td>
+                        <td className="td">
+                          {e.c4 ? (
+                            <Button onClick={x => this.removeElement(e.c4)}>
+                              {e.c4}
+                            </Button>
+                          ) : null}
+                        </td>
+                      </tr>
+                    ))
+                  : null}
+              </tbody>
+            </Table>
+          ) : null}
         </div>
       </div>
     );
