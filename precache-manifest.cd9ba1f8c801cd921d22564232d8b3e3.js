@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/cox-app/static/js/runtime~main.dbad7e00.js"
   },
   {
-    "revision": "182d019aa796e15959d0",
-    "url": "/cox-app/static/js/main.2c2ee8a8.chunk.js"
+    "revision": "b8010f4f7cfa52bfa82e",
+    "url": "/cox-app/static/js/main.cb2cc822.chunk.js"
   },
   {
     "revision": "c524de3c4c089b8baffe",
     "url": "/cox-app/static/js/2.e42eadff.chunk.js"
   },
   {
-    "revision": "182d019aa796e15959d0",
+    "revision": "b8010f4f7cfa52bfa82e",
     "url": "/cox-app/static/css/main.002ffd43.chunk.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/cox-app/static/css/2.9900ef0d.chunk.css"
   },
   {
-    "revision": "5f76d36976e7e467109a54516b475bab",
+    "revision": "0f3fbb0cc158d9b99befe6481467f99b",
     "url": "/cox-app/index.html"
   }
 ];
